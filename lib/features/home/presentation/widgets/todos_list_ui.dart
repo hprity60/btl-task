@@ -20,7 +20,10 @@ class TodosListUI extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: [
-          Text('Tasks List'),
+          Text(
+            'Tasks List',
+            style: textStyleF120W700(),
+          ),
           SizedBox(height: 10),
           Expanded(
             child: ListView.separated(
@@ -30,23 +33,49 @@ class TodosListUI extends StatelessWidget {
                 itemCount: todos.length,
                 itemBuilder: (context, index) {
                   return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         padding: EdgeInsets.all(10),
-                        height: 50,
+                        height: 120,
                         width: double.infinity,
-                        color: primaryColor,
+                        color: greyColor.shade200,
                         child: Column(
                           children: [
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "Task title: ",
                                   style: textStyleF15W700(),
                                 ),
-                                Text(todos[1].title),
+                                Expanded(
+                                  child: Text(
+                                    todos[index].title,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
                               ],
-                            )
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "Task status: ",
+                                  style: textStyleF15W700(),
+                                ),
+                                Checkbox(
+                                  value: todos[index].completed,
+                                  onChanged: null,
+                                ),
+                                Text(
+                                  todos[index].completed == false
+                                      ? "Incompleted"
+                                      : "Completed",
+                                  style: textStyleF15W700(),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       )

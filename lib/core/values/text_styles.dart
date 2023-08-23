@@ -23,3 +23,9 @@ textStyleF15W700({Color color = Colors.black}) => TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w700,
     );
+
+textStyleF120W700({Color color = Colors.black}) => TextStyle(
+      color: color,
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+    );
